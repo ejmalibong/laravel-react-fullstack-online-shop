@@ -34,7 +34,7 @@ class OrderController extends Controller
         $search = trim((string) $request->input('search', ''));
 
         // LIKE ထဲမှာ % နဲ့ _ က အထူးအဓိပ္ပာယ်ရှိလို့ ရှေ့က \ ထည့်ပြီး ပုံမှန်စာလုံးအဖြစ် ယူမယ်
-        // နောက်ဆုံးက '%' = prefix search ("Aung%" → Aung နဲ့ စတဲ့ အကုန်ရှာ) → index သုံးနိုင်တယ်
+        // နောက်ဆုံးက '%' = prefix search ("John%" → John နဲ့ စတဲ့ အကုန်ရှာ) → index သုံးနိုင်တယ်
         $like = addcslashes($search, '%_\\').'%';
 
         $orders = Order::query()
@@ -61,7 +61,7 @@ class OrderController extends Controller
                         ->orWhereHas('items.product', fn ($p) => $p->where('name', 'like', $like));
 
                     // 3) order id နဲ့ ရှာ (ဂဏန်းချည်းပဲ ဆိုမှ)
-                    // "Aung" လို စာလုံးကို id နဲ့ နှိုင်းယှဉ်ရင် မှားနိုင်လို့ စစ်ထားတာ
+                    // "John" လို စာလုံးကို id နဲ့ နှိုင်းယှဉ်ရင် မှားနိုင်လို့ စစ်ထားတာ
                     if (ctype_digit($search)) {
                         $q->orWhere('id', (int) $search);
                     }

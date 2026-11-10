@@ -52,5 +52,5 @@ Features a responsive dashboard, SweetAlert2 confirmation dialogs for delete act
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/aungkyawthetakt052-ship-it/laravel-react-fullstack-online-shop.git
+git clone https://github.com/ejmalibong/laravel-react-fullstack-online-shop.git
 cd laravel-react-fullstack-online-shop
